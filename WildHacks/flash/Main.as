@@ -13,7 +13,7 @@
 		{
 
 			Intro.Logo_MC.alpha = 0;
-			Intro.space.world.arrowhead.alpha = 0;
+			
 
 			TweenLite.to(Intro.Logo_MC, 2, {alpha:1});
 
@@ -37,15 +37,19 @@
 		
 		public function locationFind():void
 		{
-			TweenLite.to(space, 2, {scaleX:scaleX*2, ease:Sine.easeInOut});
-			TweenLite.to(space, 2, {scaleY:scaleY*2, ease:Sine.easeInOut});
-			TweenLite.to(space, 2, {x:x-400, ease:Sine.easeInOut});
-			TweenLite.to(space, 2, {y:y-200, ease:Sine.easeInOut, onComplete:locationShow});
+			Intro.visible = false;
+			
 		}
 		
 		public function locationShow():void
 		{
-			
+			TweenLite.to(space.world.locationpop, 2, {alpha:1, onComplete:bubbles});
+		}
+		
+		public function bubbles():void
+		{
+			TweenLite.to(space, 2, {y:-1080*2, ease:Bounce.easeOut});
+			//TweenLite.to(bubble, 2, {y:0, ease:Bounce.easeOut, onComplete:locationFind});
 		}
 
 
